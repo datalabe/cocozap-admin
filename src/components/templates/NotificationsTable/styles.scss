@@ -1,0 +1,23 @@
+
+.tableWrapper {
+  border: none!important;
+
+  .tableRow {
+    cursor: pointer;
+    
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  .amount {
+    display: inline-block;
+    transform: translateY(10px);
+    //color: #00b5ad;
+    font-weight: bolder;
+  }
+}
+
+.loader {
+  margin-top: 40vh;
+}

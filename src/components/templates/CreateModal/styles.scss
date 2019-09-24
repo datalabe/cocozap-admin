@@ -1,0 +1,17 @@
+
+.existingImage {
+  padding: 10px 5px;
+  max-width: 200px;
+}
+
+.instruction {
+  font-style: italic;
+  margin-bottom: 8px; 
+}
+
+.bottomButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px 0px;
+}
