@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { connect } from "react-redux"
 import { setModalStatus, setNotification } from "../../../store/actions"
 import { Menu } from "semantic-ui-react"
@@ -19,10 +19,17 @@ const newEmptyNotification = {
 
 const HeaderMenu = ({ handleLogout, modal_status, dispatch }) => {
 
+  const [modalKey, setNewModalKey] = useState(1)
   const onCloseModal = () => {
     dispatch(setModalStatus(false))
     dispatch(setNotification(newEmptyNotification))
   }
+
+  useEffect(() => {
+    setNewModalKey(Math.random())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [modal_status])
+
 
   return (
     <Menu pointing secondary color="teal">
@@ -31,7 +38,7 @@ const HeaderMenu = ({ handleLogout, modal_status, dispatch }) => {
       <Menu.Menu position="right">
         <Menu.Item name="sair" onClick={handleLogout} />
       </Menu.Menu>
-      <CreateModal open={modal_status} onClose={() => onCloseModal()}/>
+      <CreateModal key={modalKey} open={modal_status} onClose={() => onCloseModal()}/>
     </Menu>
   )
 }

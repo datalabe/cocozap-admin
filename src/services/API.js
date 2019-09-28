@@ -1,4 +1,5 @@
 import { API_URL } from "../utils/constants"
+const API_KEY = process.env.REACT_APP_API_KEY
 
 export const API = {
   userLogin: body => {
@@ -26,7 +27,12 @@ const post = (url, body, type) => {
 
   if (type === "json") {
     headers = {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "API_KEY": API_KEY
+    }
+  } else {
+    headers = {
+      "API_KEY": API_KEY
     }
   }
 
@@ -48,7 +54,8 @@ const patch = (url, body) => {
     method: "PATCH",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "API_KEY": API_KEY
     },
     body: JSON.stringify(body)
   })
@@ -63,6 +70,9 @@ const patch = (url, body) => {
 const put = (url, body) => {
   return fetch(`${API_URL}${url}`, {
     method: "PUT",
+    headers: {
+      "API_KEY": API_KEY
+    },
     body
   })
     .then(response => {
@@ -76,6 +86,9 @@ const put = (url, body) => {
 const deleteMethod = (url) => {
   return fetch(`${API_URL}${url}`, {
     method: "DELETE",
+    headers: {
+      "API_KEY": API_KEY
+    },
   })
     .then(response => {
       return response.json()

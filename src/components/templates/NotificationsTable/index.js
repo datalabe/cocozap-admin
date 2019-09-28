@@ -26,8 +26,8 @@ const NotificationsTable = ({ dispatch, modal_status }) => {
     API.getNotifications(body)
       .then(res => {
         if (Array.isArray(res.message)) {
-          _setNotifications(res.message)
           setTotalNumber(res.totalItems)
+          _setNotifications(res.message)
           setNumberOfPages(populateNumberPages(res.pages))
         }
       })
@@ -77,6 +77,7 @@ const NotificationsTable = ({ dispatch, modal_status }) => {
           <Table.Row>
             <Table.HeaderCell>Categoria</Table.HeaderCell>
             <Table.HeaderCell>Data</Table.HeaderCell>
+            <Table.HeaderCell>Descrição</Table.HeaderCell>
             <Table.HeaderCell>Imagem</Table.HeaderCell>
             <Table.HeaderCell>Frequência</Table.HeaderCell>
             <Table.HeaderCell>Endereço</Table.HeaderCell>
@@ -94,6 +95,7 @@ const NotificationsTable = ({ dispatch, modal_status }) => {
               <Table.Row key={notification._id} className="tableRow" onClick={()=> onClickRow(notification)}>
                 <Table.Cell>{notification.category}</Table.Cell>
                 <Table.Cell>{notification.date}</Table.Cell>
+                <Table.Cell>{notification.description}</Table.Cell>
                 <Table.Cell>{notification.picture}</Table.Cell>
                 <Table.Cell>{notification.frequency}</Table.Cell>
                 <Table.Cell>{notification.address}</Table.Cell>
@@ -108,7 +110,7 @@ const NotificationsTable = ({ dispatch, modal_status }) => {
         </Table.Body>
         <Table.Footer>
           <Table.Row>
-            <Table.HeaderCell colSpan="10">
+            <Table.HeaderCell colSpan="11">
               <div className="amount">
                 {`Total: ${totalNumber} notificações`}
               </div>

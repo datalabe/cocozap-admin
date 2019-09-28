@@ -8,7 +8,6 @@ const Dashboard = ({ dispatch }) => {
   const handleLogout = () => {
     return dispatch(setAuth(false))
   }
-
   return (
     <div className="dashboardWrapper">
       <HeaderMenu handleLogout={handleLogout} />

@@ -114,6 +114,17 @@ const CreateModal = ({ open, onClose, current_notification }) => {
               />
             </Form.Field>
             <Form.Field>
+              <label>Descrição</label>
+              <textarea
+                name="description"
+                value={form.description || ""}
+                placeholder="Descrição"
+                onChange={e =>
+                  onChangeForm({ ...form, [e.target.name]: e.target.value })
+                }
+              />
+            </Form.Field>
+            <Form.Field>
               {existentNotification ? (
                 <>
                   <label>Imagem atual</label>
